@@ -20,3 +20,5 @@ steps: # Step 1. Build Docker image
     - 'us-central1'
 
     - '--allow-unauthenticated' # Allow public access to the service (it's a website)
+options:
+  logging: CLOUD_LOGGING_ONLY # Store build logs in Cloud Logging instead of Cloud Storage.
