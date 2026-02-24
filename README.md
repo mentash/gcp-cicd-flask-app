@@ -32,10 +32,7 @@ python app.py
 
 ## Deployment
 
-
-
 Deployments are automated via Cloud Build on push to the main branch.
-
 
 ---
 *Last updated: February 24, 2026*
