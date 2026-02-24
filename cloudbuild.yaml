@@ -1,11 +1,13 @@
-steps: # Step 1. Build Docker image
+steps:
+  # Step 1. Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/skycraft-devops/flaskapp-artifact-repo/flaskapp-image:latest', '.']
-      # Step 2. Push Docker image to Artifact Registry
+  
+  # Step 2. Push Docker image to Artifact Registry Repository
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/skycraft-devops/flaskapp-artifact-repo/flaskapp-image:latest']
 
-    # Step 3. Deploy to Cloud Run
+  # Step 3. Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: # gcloud run deploy - create or update a Cloud Run service with the new image
@@ -22,5 +24,6 @@ steps: # Step 1. Build Docker image
     - '--allow-unauthenticated' # Allow public access to the service (it's a website)
     - '--ingress'
     - 'all'
+
 options:
   logging: CLOUD_LOGGING_ONLY # Store build logs in Cloud Logging instead of Cloud Storage.
