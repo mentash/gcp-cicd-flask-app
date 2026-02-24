@@ -1,0 +1,7 @@
+steps: # Step 1. Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/skycraft-devops/flaskapp-artifact-repo/flaskapp-imager:latest', '.']
+      # Step 2. Push Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/skycraft-devops/flaskapp-artifact-repo/flaskapp-imager:latest']
+
